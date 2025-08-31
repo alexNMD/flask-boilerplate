@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project_api"
+version = "0.1.0"
+dynamic = ["dependencies"]
+requires-python = ">=3.11"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.optional-dependencies]
+test = [
+    "pytest-cov == 6.2.1"
+]
+lint = [
+    "ruff == 0.12.7",
+    "mypy == 1.17.1",
+    "types-requests == 2.32.4.20250611",
+    "types-passlib == 1.7.7.20250602",
+]
+dev = [
+    "project_api[test,lint]"
+]
+deploy = [
+    "gunicorn == 23.0.0"
+]
+
+[tool.setuptools.packages.find]
+include = ["project_api*"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint.pyflakes]
+allowed-unused-imports = ["project_api.model"]
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # pep8-naming
+    "N",
+]
