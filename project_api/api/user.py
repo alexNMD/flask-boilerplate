@@ -2,9 +2,8 @@ from flask.views import MethodView
 from flask_smorest import Blueprint
 
 from project_api.api.schema.user import UserSchema
-from project_api.service.user import UserService
 from project_api.helper.error_handler import with_error_responses
-from project_api.service.auth import AuthService
+from project_api.service.user import UserService
 
 user_bp = Blueprint("user", __name__, url_prefix="/user")
 
