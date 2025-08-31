@@ -9,4 +9,4 @@ COPY . .
 # hadolint ignore=DL3013
 RUN pip --no-cache-dir install ".[deploy]"
 
-ENTRYPOINT ["gunicorn", "--forwarded-allow-ips=*", "--bind", "0.0.0.0", "ententes:create_app()"]
+ENTRYPOINT ["gunicorn", "--forwarded-allow-ips=*", "--bind", "0.0.0.0", "project_api:create_app()"]
